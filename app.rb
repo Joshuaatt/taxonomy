@@ -8,3 +8,11 @@ also_reload 'lib/**/*.rb'
 get '/' do
   erb :index
 end
+
+get '/families'
+
+end
+
+post '/families'
+
+end

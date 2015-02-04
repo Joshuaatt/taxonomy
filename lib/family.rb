@@ -1,8 +1,5 @@
 class Family < ActiveRecord::Base
-  belongs_to :taxaclass
-  belongs_to :subclass
-  belongs_to :superorder
-  belongs_to :order
+  belongs_to :angiosperm
   has_many :genera
   has_many :species
 end
