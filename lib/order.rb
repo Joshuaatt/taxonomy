@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  belongs_to :class
+  belongs_to :taxaclass
   belongs_to :subclass
   belongs_to :superorder
   has_many :families

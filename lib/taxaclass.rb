@@ -1,4 +1,4 @@
-class Class < ActiveRecord::Base
+class TaxaClass < ActiveRecord::Base
   has_many :subclasses
   has_many :superorders
   has_many :orders
