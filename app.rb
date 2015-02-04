@@ -18,3 +18,15 @@ post '/families' do
   params['name'].split.each { |name| Family.create(name: name)}
   redirect '/angiosperms'
 end
+
+get '/family/:id' do
+  @family = Family.find(params['id'])
+  @genera = @family.genera
+  erb :submit_genera
+end
+
+post '/family/:id' do
+  family = Family.find(params['id'])
+  params['name'].split.each { |name| family.genera.create(name: name) }
+  redirect "/family/#{ family.id }"
+end

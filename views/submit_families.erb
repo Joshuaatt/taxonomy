@@ -8,7 +8,7 @@
 <% if @families.any? %>
   <% @families.each do |family| %>
     <ul>
-      <li><%= family.name %></li>
+      <li><%= family.name %> | <a href="/family/<%= family.id %>">add genera</a></li>
     </ul>
   <% end %>
 <% end %>
