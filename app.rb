@@ -9,10 +9,12 @@ get '/' do
   erb :index
 end
 
-get '/families'
-
+get '/angiosperms' do
+  @families = Family.all
+  erb :submit_families
 end
 
-post '/families'
-
+post '/families' do
+  params['name'].split.each { |name| Family.create(name: name)}
+  redirect '/angiosperms'
 end
