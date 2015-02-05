@@ -4,6 +4,7 @@ require 'pry'
 Bundler.require :default
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 also_reload 'lib/**/*.rb'
+require '/config/initializers/inflections'
 
 get '/' do
   erb :index
