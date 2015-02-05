@@ -29,12 +29,19 @@ get '/family/:id' do
 end
 
 post '/family/:id/genera' do
-  angiosperm = Angiosperm.find('1')
   family = Family.find(params['id'])
   params['name'].split.each { |name| family.genera.create(name: name) }
   redirect "/family/#{ family.id }"
 end
 
 get '/genus/:id' do
-  @genus =
+  @genus = Genus.find(params['id'])
+  @species = @genus.species
+  erb :submit_species
+end
+
+post '/genus/:id/species' do
+  genus = Genus.find(params['id'])
+  params['name'].split.each { |name| genus.species.create(name: name)}
+  redirect "/genus/#{ genus.id }"
 end
