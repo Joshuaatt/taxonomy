@@ -1,0 +1,18 @@
+<h3>Submit genera to family:</h3>
+
+<form action="/family/<%= @family.id %>/genera" method="post">
+  <input type="text" name="name" class="database_entry">
+  <button type="submit">Add genera to a family in the database</button>
+</form>
+
+<% if @genera.any? %>
+  <% @genera.each do |genus| %>
+    <ul>
+      <li><%= genus.name %> | <a href="/genus/<%= genus.id %>">add species</a></li>
+    </ul>
+  <% end %>
+  <% else %>
+  <p>
+    There are no genera for this family
+  </p>
+<% end %>
