@@ -11,4 +11,8 @@
       <li><%= genus.name %> | <a href="/genera/<%= genera.id %>">add species</a></li>
     </ul>
   <% end %>
+  <% else %>
+  <p>
+    There are no genera for this family
+  </p>
 <% end %>

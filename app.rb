@@ -4,25 +4,27 @@ require 'pry'
 Bundler.require :default
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 also_reload 'lib/**/*.rb'
-require '/config/initializers/inflections'
+Dir[File.dirname(__FILE__) + '/../config/initializers/*.rb'].each { |file| require file }
 
 get '/' do
+  @angiosperm = Angiosperm.find('1')
   erb :index
 end
 
-get '/angiosperms' do
+get '/angiosperm/:id' do
   @families = Family.all
   erb :submit_families
 end
 
 post '/families' do
-  params['name'].split.each { |name| Family.create(name: name)}
-  redirect '/angiosperms'
+  angiosperm = Angiosperm.find('1')
+  params['name'].split.each { |name| angiosperm.families.create(name: name)}
+  redirect "/angiosperm/#{ angiosperm.id }"
 end
 
 get '/family/:id' do
   @family = Family.find(params['id'])
-  @genera = @family.genera
+  @genera = Genus.all
   erb :submit_genera
 end
 
