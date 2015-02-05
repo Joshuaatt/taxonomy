@@ -847,6 +847,12 @@ Yeatesia
 Zygoruellia'
 
 acanthaceae_genera.split.each do |genus|
-  family = Family.find_by_name('Acanthaceae')
+  family = Family.find_by_name 'Acanthaceae'
   family.genera.create(name: genus)
+end
+
+acanthodium_species = 'glabrum'
+acanthodium_species.split.each do |species|
+  genus = Genus.find_by_name 'Acanthodium'
+  genus.species.create(name: species)
 end

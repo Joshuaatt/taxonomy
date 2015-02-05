@@ -1,8 +1,8 @@
-<h3>Submit species to family:</h3>
+<h3>Submit species to <em><%= @genus.name %></em></h3>
 
 <form action="/genus/<%= @genus.id %>/species" method="post">
   <input type="text" name="name" class="database_entry">
-  <button type="submit">Add species to a genus in the database</button>
+  <button type="submit">Add species</button>
 </form>
 
 <% if @species.any? %>
