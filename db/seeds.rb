@@ -856,3 +856,16 @@ acanthodium_species.split.each do |species|
   genus = Genus.find_by_name 'Acanthodium'
   genus.species.create(name: species)
 end
+
+acanthopale_species = 'albosetulosa
+aethiopica
+azaleoides
+confertiflora
+decempedalis
+longipilosa
+pubescens
+tetrasperma'
+acanthopale_species.split.each do |species|
+  genus = Genus.find_by_name 'Acanthopale'
+  genus.species.create(name: species)
+end
