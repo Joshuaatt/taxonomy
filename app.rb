@@ -18,12 +18,13 @@ end
 
 post '/families' do
   angiosperm = Angiosperm.find('1')
-  if Family.find_by_name(params['name']) == nil
+  families = Family.all
+  if families.each == params['name'].split.each
   then
     params['name'].split.each { |name| angiosperm.families.create(name: name)}
     redirect "/angiosperm/#{ angiosperm.id }"
   else
-    break
+    redirect "/angiosperm/#{ angiosperm.id }"
   end
 end
 
@@ -35,8 +36,14 @@ end
 
 post '/family/:id/genera' do
   family = Family.find(params['id'])
-  params['name'].split.each { |name| family.genera.create(name: name) }
-  redirect "/family/#{ family.id }"
+  genera = Genus.all
+  if genera.each == params['name'].split.each
+  then
+    params['name'].split.each { |name| family.genera.create(name: name) }
+    redirect "/family/#{ family.id }"
+  else
+    redirect "/family/#{ family.id }"
+  end
 end
 
 get '/genus/:id' do
@@ -47,6 +54,12 @@ end
 
 post '/genus/:id/species' do
   genus = Genus.find(params['id'])
-  params['name'].split.each { |name| genus.species.create(name: name)}
-  redirect "/genus/#{ genus.id }"
+  species = Species.all
+  if species.each == params['name'].split.each
+  then
+    params['name'].split.each { |name| genus.species.create(name: name)}
+    redirect "/genus/#{ genus.id }"
+  else
+    redirect "/genus/#{ genus.id }"
+  end
 end
