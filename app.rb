@@ -18,8 +18,13 @@ end
 
 post '/families' do
   angiosperm = Angiosperm.find('1')
-  params['name'].split.each { |name| angiosperm.families.create(name: name)}
-  redirect "/angiosperm/#{ angiosperm.id }"
+  if Family.find_by_name(params['name']) == nil
+  then
+    params['name'].split.each { |name| angiosperm.families.create(name: name)}
+    redirect "/angiosperm/#{ angiosperm.id }"
+  else
+    break
+  end
 end
 
 get '/family/:id' do
